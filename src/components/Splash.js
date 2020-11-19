@@ -9,7 +9,7 @@ const Splash = (props) => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const timeout = setTimeout(() => navigation.navigate('Landing'), 1000);
+    const timeout = setTimeout(() => navigation.navigate('CharacterListing'), 1000);
     return () => clearTimeout(timeout);
   });
 
@@ -17,7 +17,10 @@ const Splash = (props) => {
   return (
     <View style={[eva.style.container]}>
       <Text category='h1' style={eva.style.text}>
-        SPLASH
+        MARVEL
+      </Text>
+      <Text category='p1' style={eva.style.creditText}>
+        Data provided by Marvel. © 2020 MARVEL
       </Text>
     </View>
   );
@@ -39,6 +42,10 @@ const styling = (theme) => ({
     borderColor: '#ffffff',
     paddingHorizontal: normalizeSize(20),
     paddingVertical: normalizeSize(10),
+  },
+  creditText: {
+    color: '#ffffff',
+    marginTop:normalizeSize(8)
   },
 });
 

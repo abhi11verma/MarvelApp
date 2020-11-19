@@ -16,3 +16,19 @@ const guidelineBaseHeight = 480;
 
 export const normalizeSize = size => shortDimension / guidelineBaseWidth * size;
 export const verticalScale = size => longDimension / guidelineBaseHeight * size;
+
+
+export const IMAGE_SIZE_OPTIONS = {
+  square: {
+    SMALL: 'standard_small',
+    MEDIUM: 'standard_medium',
+    LARGE: 'standard_large',
+  },
+  portrait: {
+    SMALL: 'portrait_small',
+    MEDIUM: 'portrait_fantastic',
+    LARGE: 'portrait_uncanny',
+  },
+};
+
+export const getImage = (path, extension, variant) => path + '/' + variant + '.' + extension;
