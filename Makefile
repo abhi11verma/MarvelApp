@@ -1,5 +1,5 @@
 deps: ## Installs requirements
-	npm i
+	yarn -i
 
 run_packager: ## Starts packager
 	npm start --reset-cache
