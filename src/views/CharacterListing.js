@@ -1,22 +1,46 @@
 import React, {useEffect} from 'react';
-import {Layout, List, Text, TopNavigation, useTheme} from '@ui-kitten/components';
+import {Icon, Layout, List, Text, TopNavigation, TopNavigationAction, useTheme} from '@ui-kitten/components';
 import {StyleSheet, View} from 'react-native';
 import CharacterListItem from 'src/components/CharacterListItem';
 import LoadingListItem from 'src/components/LoadingListItem';
+import SearchBar from 'src/components/SearchBar';
 
-function CharacterListing({characters, getCharacters, getNextSetOfCharacters, isLoading, offset, isError}) {
+function CharacterListing({
+                            characters,
+                            getCharacters,
+                            isLoading,
+                            offset,
+                            isError,
+                            isSearchActive,
+                            searchBarState,
+                            searchCharactersByName,
+                          }) {
+
   const theme = useTheme();
   useEffect(() => {
     getCharacters();
   }, []);
 
+  const searchIcon = (props) => (
+    <Icon {...props} name='search' onPress={() => searchBarState(true)}/>
+  );
+
+  const searchAction = (props) => (
+    <>
+      <TopNavigationAction icon={searchIcon}/>
+    </>
+  );
+
   return (
     <Layout style={styles.container}>
-      <TopNavigation
-        alignment='center'
-        title={<Text category={'s1'} style={{color:'#fff',fontWeight: 'bold',fontSize:16}}>MARVEL CHARACTERS</Text>}
-        style={{backgroundColor:theme['color-primary-600']}}
-      />
+      {isSearchActive ? <SearchBar searchBarState={searchBarState} searchFn={searchCharactersByName}/> :
+        <TopNavigation
+          alignment='center'
+          title={<Text category={'s1'} style={{color: '#fff', fontWeight: 'bold', fontSize: 16}}>MARVEL
+            CHARACTERS</Text>}
+          style={{backgroundColor: theme['color-primary-600'], height: 50}}
+          accessoryRight={searchAction}
+        />}
       {isError ?
           <View style={styles.messageContainer}>
             <Text status='warning'>Error Fetching Data, Please verify the api keys.</Text>
@@ -24,10 +48,10 @@ function CharacterListing({characters, getCharacters, getNextSetOfCharacters, is
           :
         <List
           data={characters}
-          ListEmptyComponent={LoadingListItem}
+          ListEmptyComponent={<LoadingListItem isLoading={isLoading}/>}
           contentContainerStyle={styles.contentContainer}
-          onEndReached={() => getNextSetOfCharacters(offset)}
-          onEndReachedThreshold={0.5}
+          onEndReached={() => getCharacters()}
+          onEndReachedThreshold={0.4}
           onRefresh={getCharacters}
           refreshing={isLoading}
           renderItem={({item, index}) =>

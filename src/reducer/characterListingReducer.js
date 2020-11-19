@@ -6,6 +6,8 @@ export const actions = {
   LOADING: `${prefix} LOADING`,
   LOADING_COMPLETE: `${prefix} LOADING_COMPLETE`,
   ERROR: `${prefix} ERROR`,
+  SET_SEARCH_STATE: `${prefix} SET_SEARCH_STATE`,
+  SET_SEARCH_STRING: `${prefix} SET_SEARCH_STRING`,
 };
 
 
@@ -15,7 +17,9 @@ const createInitialState = () => (
     singleCharacter: {},
     isLoading: false,
     isError: false,
-    offset: -1,
+    offset: 0,
+    isSearchActive: false,
+    searchString: '',
   });
 
 
@@ -50,6 +54,23 @@ const reducer = (state = createInitialState(), action) => {
       return {
         ...state,
         isError: true,
+      };
+    }
+    case actions.SET_SEARCH_STATE: {
+      return {
+        ...state,
+        isSearchActive: action.payload,
+        searchString: '',
+        characters: [],
+        offset: 0,
+      };
+    }
+    case actions.SET_SEARCH_STRING: {
+      return {
+        ...state,
+        searchString: action.payload,
+        characters: [],
+        offset: 0,
       };
     }
     default:

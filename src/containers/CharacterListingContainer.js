@@ -1,14 +1,20 @@
 import {connect} from 'react-redux';
-import {getCharacters, getNextSetOfCharacters} from 'src/action/charactersListingAction';
+import {
+  getCharacters,
+  getNextSetOfCharacters,
+  searchBarState,
+  searchCharactersByName,
+} from 'src/action/charactersListingAction';
 import CharacterListing from 'src/views/CharacterListing';
 
-const mapStateToProps = ({characters: {characters, isLoading,isError,offset}}) => (
+const mapStateToProps = ({characters: {characters, isLoading, isError, offset, isSearchActive}}) => (
   {
     characters,
     isLoading,
     isError,
-    offset
+    offset,
+    isSearchActive,
   }
 );
 
-export default connect(mapStateToProps, {getCharacters,getNextSetOfCharacters})(CharacterListing);
+export default connect(mapStateToProps, {getCharacters, searchBarState,searchCharactersByName})(CharacterListing);

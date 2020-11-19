@@ -8,13 +8,8 @@ const auth = () => {
   return `ts=${ts}&apikey=${MARVEL_KEY}&hash=${authHash}`;
 };
 
-export const fetchCharacters = () => request({
-  url: `v1/public/characters?${auth()}`,
-  method: 'GET',
-});
-
-export const fetchNextSetCharacters = (offset) => request({
-  url: `v1/public/characters?offset=${offset}&${auth()}`,
+export const fetchCharactersByName = (params) => request({
+  url: `v1/public/characters?${params}&${auth()}`,
   method: 'GET',
 });
 
