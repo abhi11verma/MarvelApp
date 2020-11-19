@@ -13,10 +13,11 @@ export const fetchCharacters = () => request({
   method: 'GET',
 });
 
-export const fetchCharacterById = (id) => request({
-  url: `v1/public/characters/${id}?${auth()}`,
+export const fetchNextSetCharacters = (offset) => request({
+  url: `v1/public/characters?offset=${offset}&${auth()}`,
   method: 'GET',
 });
+
 
 
 

@@ -12,7 +12,10 @@ const OtherDetailsList = (props) => {
     <View style={[eva.style.container]}>
       <Text category='s1' style={{fontSize:normalizeSize(12),marginBottom:4,fontWeight: 'bold'}}>{listName} Appeared In</Text>
       <Divider/>
-      {_.map(listData, (item,index) => <OtherDetailsItem key={index} item={item}/>)}
+      {_.isEmpty(listData) ?
+        <Text appearance='hint' style={{marginTop: normalizeSize(8)}}>No information available at this moment.</Text>
+        : _.map(listData, (item, index) =>
+          <OtherDetailsItem key={index} item={item}/>)}
     </View>
   );
 };

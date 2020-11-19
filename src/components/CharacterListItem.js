@@ -12,6 +12,7 @@ const CharacterListItem = ({eva, style, character}) => {
       <View style={eva.style.container}>
         <View style={{borderRadius: 4}}>
           <Image
+            progressiveRenderingEnabled={true}
             source={{uri: getImage(character.thumbnail.path, character.thumbnail.extension, IMAGE_SIZE_OPTIONS.square.MEDIUM)}}
             style={eva.style.thumbnailImage}
           />
@@ -34,10 +35,12 @@ const styling = (theme) => ({
     height: 100,
     borderRadius: 4,
   },
-  name: {},
+  name: {
+    marginTop:12
+  },
 });
 
-export default withStyles(CharacterListItem, styling);
+const styledCharacterListItem = withStyles(CharacterListItem, styling);
 
-
+export default React.memo(styledCharacterListItem);
 

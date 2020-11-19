@@ -2,6 +2,7 @@ const prefix = '[CHARACTER]';
 
 export const actions = {
   ADD_CHARACTERS: `${prefix} ADD_CHARACTERS`,
+  SET_OFFSET: `${prefix} SET_OFFSET`,
   LOADING: `${prefix} LOADING`,
   LOADING_COMPLETE: `${prefix} LOADING_COMPLETE`,
   ERROR: `${prefix} ERROR`,
@@ -14,6 +15,7 @@ const createInitialState = () => (
     singleCharacter: {},
     isLoading: false,
     isError: false,
+    offset: -1,
   });
 
 
@@ -22,7 +24,13 @@ const reducer = (state = createInitialState(), action) => {
     case actions.ADD_CHARACTERS: {
       return {
         ...state,
-        characters: action.payload,
+        characters: action.payload.offset === state.offset ? [...state.characters] : [...state.characters, ...action.payload.characters],
+      };
+    }
+    case actions.SET_OFFSET: {
+      return {
+        ...state,
+        offset: action.payload,
       };
     }
     case actions.LOADING: {

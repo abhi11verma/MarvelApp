@@ -28,6 +28,7 @@ const CharacterDetails = (props) => {
       <ScrollView contentContainerStyle={{paddingBottom: StatusBar.currentHeight + 50}}>
         <Card style={[eva.style.cardStyle, eva.style.imageContainer]}>
           <Image
+            progressiveRenderingEnabled={true}
             source={{uri: getImage(character.thumbnail.path, character.thumbnail.extension, IMAGE_SIZE_OPTIONS.portrait.LARGE)}}
             style={eva.style.portraitImage}
           />
@@ -73,7 +74,8 @@ const styling = (theme) => ({
   portraitImage: {
     height: 450,
     width: 300,
-    borderRadius:4
+    borderRadius: 4,
+    backgroundColor: '#dddddd',
   },
   descriptionText: {
     marginTop: normalizeSize(4),
