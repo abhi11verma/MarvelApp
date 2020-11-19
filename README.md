@@ -2,9 +2,7 @@
 
 Marvel app for listing characters and details
 
-
-![](/test_app/marvel_app_demo.gif | width=100)
-
+<img src="https://github.com/abhi11verma/MarvelApp/blob/main/test_app/marvel_app_demo.gif" width="250"/>
 
 ## Features
 
