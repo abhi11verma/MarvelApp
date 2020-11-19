@@ -9,6 +9,8 @@ Marvel app for listing characters and details
 ## Running the app
 [Android]
 - clone the repository
+- get public and private key for fetching data from [Marvel](https://developer.marvel.com/)
+- copy the **MarvelKey.example.js** and create **MarvelKey.js** with keys in previous step 
 - use `make deps` to install packages
 - connect a device or emulator
 - use `make run_app` to install the application on an emulator running

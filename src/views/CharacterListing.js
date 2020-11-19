@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
 import {Layout, List, Text, TopNavigation} from '@ui-kitten/components';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import CharacterListItem from 'src/components/CharacterListItem';
 
-function CharacterListing({characters, getCharacters, isLoading}) {
+function CharacterListing({characters, getCharacters, isLoading, isError}) {
 
   useEffect(() => {
     getCharacters();
   }, []);
+
 
   return (
     <Layout style={styles.container}>
@@ -15,7 +16,15 @@ function CharacterListing({characters, getCharacters, isLoading}) {
         alignment='center'
         title={'MARVEL CHARACTERS'}
       />
-      {isLoading ? <Text>Getting Data...</Text> :
+      {isLoading ?
+        <View style={styles.messageContainer}>
+          <Text>Getting Data...</Text>
+        </View>
+        : isError ?
+          <View style={styles.messageContainer}>
+            <Text status='warning'>Error Fetching Data, Please verify the api keys.</Text>
+          </View>
+          :
         <List
           data={characters}
           contentContainerStyle={styles.contentContainer}
@@ -42,6 +51,11 @@ const styles = StyleSheet.create({
   },
   item: {
     marginVertical: 4,
+  },
+  messageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
   },
 });
 

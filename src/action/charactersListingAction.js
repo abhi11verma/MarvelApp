@@ -11,6 +11,7 @@ const getCharacters = () => async (dispatch) => {
     dispatch(staticAction(actions.LOADING_COMPLETE));
   } catch (e) {
     dispatch(staticAction(actions.ERROR));
+    dispatch(staticAction(actions.LOADING_COMPLETE));
   }
 };
 
