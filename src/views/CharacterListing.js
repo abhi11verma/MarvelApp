@@ -22,7 +22,7 @@ function CharacterListing({
   }, []);
 
   const searchIcon = (props) => (
-    <Icon {...props} name='search' onPress={() => searchBarState(true)}/>
+    <Icon {...props} name='search' fill='#fff' onPress={() => searchBarState(true)}/>
   );
 
   const searchAction = (props) => (

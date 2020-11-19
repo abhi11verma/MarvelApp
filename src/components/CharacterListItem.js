@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, View} from 'react-native';
-import {Card, Text, withStyles} from '@ui-kitten/components';
+import {Card, Icon, Text, withStyles} from '@ui-kitten/components';
 import {getImage, IMAGE_SIZE_OPTIONS, normalizeSize} from 'src/helper';
 import {useNavigation} from '@react-navigation/native';
 
@@ -19,6 +19,9 @@ const CharacterListItem = ({eva, style, character}) => {
         </View>
         <View style={{marginLeft: normalizeSize(16), maxWidth: '70%'}}>
           <Text category='h6' style={eva.style.name}>{character.name}</Text>
+        </View>
+        <View style={{marginLeft:'auto',justifyContent:'center'}}>
+          <Icon name={'chevron-right-outline'} fill='#c5c5c5' style={{width: 30, height: 30}}/>
         </View>
       </View>
     </Card>
