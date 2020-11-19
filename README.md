@@ -2,6 +2,9 @@
 
 Marvel app for listing characters and details
 
+![DEMO](/test_app/marvel_app_demo.gif)
+
+
 ## Features
 
 - Based on Eva design system using [UI Kitten](https://akveo.github.io/react-native-ui-kitten/)
