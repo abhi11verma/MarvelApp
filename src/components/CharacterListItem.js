@@ -34,6 +34,7 @@ const styling = (theme) => ({
     width: 100,
     height: 100,
     borderRadius: 4,
+    backgroundColor:"#dbdbdb"
   },
   name: {
     marginTop:12

@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import {Layout, List, Text, TopNavigation} from '@ui-kitten/components';
+import {Layout, List, Text, TopNavigation, useTheme} from '@ui-kitten/components';
 import {StyleSheet, View} from 'react-native';
 import CharacterListItem from 'src/components/CharacterListItem';
 import LoadingListItem from 'src/components/LoadingListItem';
 
 function CharacterListing({characters, getCharacters, getNextSetOfCharacters, isLoading, offset, isError}) {
-
+  const theme = useTheme();
   useEffect(() => {
     getCharacters();
   }, []);
@@ -14,7 +14,8 @@ function CharacterListing({characters, getCharacters, getNextSetOfCharacters, is
     <Layout style={styles.container}>
       <TopNavigation
         alignment='center'
-        title={'MARVEL CHARACTERS'}
+        title={<Text category={'s1'} style={{color:'#fff',fontWeight: 'bold',fontSize:16}}>MARVEL CHARACTERS</Text>}
+        style={{backgroundColor:theme['color-primary-600']}}
       />
       {isError ?
           <View style={styles.messageContainer}>
